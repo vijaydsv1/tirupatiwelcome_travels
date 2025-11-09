@@ -11,14 +11,14 @@ import openpyxl
 from django.conf import settings
 from .forms import GalleryImageForm, BookingForm
 from .models import GalleryImage, Booking
+import os
 
 
 # ✅ Admin Login Credentials
-ADMIN_USERNAME = "tirupatiwelcometravels@gmail.com"
-ADMIN_PASSWORD = "ttd@123"
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+OWNER_WHATSAPP = os.getenv("OWNER_WHATSAPP")
 
-# ✅ WhatsApp number for bookings
-OWNER_WHATSAPP = "919876543210"
 
 
 # ✅ Login Required Decorator

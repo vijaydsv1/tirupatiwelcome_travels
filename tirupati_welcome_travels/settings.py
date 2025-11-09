@@ -15,6 +15,11 @@ import os
 from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -100,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SESSION_COOKIE_AGE = 3600  # auto logout after 1 hour
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-ADMIN_USERNAME = "tirupatiwelcometravels@gmail.com"
-ADMIN_PASSWORD = "ttd@123"
 
 
 # Internationalization
