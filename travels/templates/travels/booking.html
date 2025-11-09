@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your Ride | Tirupati Welcome Travels</title>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #fff8dc, #f7e79e, #ffdf00);
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 700px;
+        background: #fffdf3;
+        margin: 40px auto;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        border: 2px solid #e6c300;
+    }
+
+    h1, h3 {
+        text-align: center;
+        color: #b8860b;
+        margin-bottom: 10px;
+    }
+
+    p {
+        text-align: center;
+        color: #3e2f00;
+        margin-bottom: 25px;
+        font-size: 15px;
+    }
+
+    label {
+        display: block;
+        margin: 10px 0 5px;
+        color: #3e2f00;
+        font-weight: 600;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #caa400;
+        margin-bottom: 15px;
+        font-size: 15px;
+        outline: none;
+    }
+
+    textarea { height: 120px; }
+
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        background: #b8860b;
+        color: white;
+        border-radius: 25px;
+        font-size: 17px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+        background: #d4af37;
+        color: #3e2f00;
+    }
+
+    .footer-note {
+        font-size: 13px;
+        text-align: center;
+        margin-top: 10px;
+        color: #5a4500;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Contact / Book Your Ride</h1>
+    <h3>We’re Here to Make Your Travel Easy & Comfortable</h3>
+    <p>Share your travel details. Our team will contact you immediately.</p>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <label>Full Name *</label>
+        <input type="text" name="name" required>
+
+        <label>Phone Number *</label>
+        <input type="text" name="phone" required>
+
+        <label>Email (optional)</label>
+        <input type="email" name="email">
+
+        <label>Select Service *</label>
+        <select name="service" required>
+            <option value="">-- Select Service --</option>
+            <option>Airport Pickup / Drop</option>
+            <option>Tirumala Darshan Trip</option>
+            <option>Local City Ride</option>
+            <option>Outstation: Andhra Pradesh</option>
+            <option>Outstation: Telangana</option>
+            <option>Outstation: Tamil Nadu</option>
+            <option>Outstation: Karnataka</option>
+            <option>Outstation: Kerala</option>
+        </select>
+
+        <label>Pickup Location *</label>
+        <input type="text" name="pickup" required>
+
+        <label>Drop Location (Optional)</label>
+        <input type="text" name="drop">
+
+        <label>Your Message / Trip Details *</label>
+        <textarea name="message" required placeholder="Example: Need pickup from Airport at 5 PM…"></textarea>
+
+        <button class="btn-submit" type="submit">Submit Request</button>
+
+        <p class="footer-note">
+            By submitting, you allow us to contact you through call/WhatsApp/SMS for booking confirmation.
+        </p>
+    </form>
+</div>
+
+</body>
+</html>

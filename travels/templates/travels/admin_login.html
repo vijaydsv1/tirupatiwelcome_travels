@@ -1,0 +1,175 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login – Tirupati Welcome Travels</title>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #b8860b, #d4af37, #ffdf00);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .login-box {
+        width: 95%;
+        max-width: 380px;
+        background: #fffbea;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        text-align: center;
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ✅ LOGO */
+    .logo {
+        width: 90px;
+        margin: 0 auto 15px auto;
+        display: block;
+    }
+
+    .login-box h2 {
+        margin-bottom: 5px;
+        color: #b8860b;
+        font-weight: 700;
+    }
+
+    .sub-text {
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    .input-group {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .input-group label {
+        font-weight: 600;
+        color: #5a4500;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 6px;
+        border-radius: 10px;
+        border: 1px solid #d4af37;
+        outline: none;
+        font-size: 15px;
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 12px;
+        background: #b8860b;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+        font-weight: 600;
+    }
+
+    .btn-login:hover {
+        background: #d4af37;
+        color: #3e2f00;
+    }
+
+    .forgot {
+        margin-top: 12px;
+        font-size: 14px;
+    }
+
+    .forgot a {
+        text-decoration: none;
+        color: #b8860b;
+        font-weight: 600;
+    }
+
+    .error-box {
+        background: #ffdddd;
+        color: #b30000;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .password-wrapper {
+        position: relative;
+    }
+
+    .password-wrapper i {
+        position: absolute;
+        right: 12px;
+        top: 42px;
+        cursor: pointer;
+        color: #b8860b;
+        font-size: 18px;
+    }
+
+</style>
+
+</head>
+<body>
+
+<div class="login-box">
+
+    <img src="{% static 'travels/images/logo.png' %}" class="logo" alt="Logo">
+
+    <h2>Admin Login</h2>
+    <p class="sub-text">Secure access to your dashboard</p>
+
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="error-box">{{ msg }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="input-group">
+            <label>Email</label>
+            <input type="text" name="username" placeholder="Enter admin email" required>
+        </div>
+
+        <div class="input-group password-wrapper">
+            <label>Password</label>
+            <input type="password" name="password" id="passwordField" placeholder="Enter password" required>
+            <i onclick="togglePassword()">👁</i>
+        </div>
+
+        <button type="submit" class="btn-login">Login</button>
+
+       <p class="forgot">
+    <a href="#">Forgot password?</a>
+</p>
+
+    </form>
+</div>
+
+<script>
+function togglePassword() {
+    let field = document.getElementById("passwordField");
+    field.type = field.type === "password" ? "text" : "password";
+}
+</script>
+
+</body>
+</html>
